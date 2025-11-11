@@ -1,0 +1,33 @@
+name: Check Grammar
+description: Verify that what I am putting out in the world is coherent LOL.
+
+on:
+  push:
+    branches:
+        - main
+
+  workflow_dispatch:
+
+  pull_request:
+    types:
+        - opened
+        - synchronize
+        - reopened
+
+jobs:
+  grammar-check:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout repo
+          uses: actions/checkout@v4
+
+        - name: Spellcheck Step
+          uses: rojopolis/spellcheck=github-actions@0
+          with:
+            config_path: .github/spellcheck.yaml
+
+
+        
+
+        
